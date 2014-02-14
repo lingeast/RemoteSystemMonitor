@@ -1,0 +1,51 @@
+LING-WORK-MIB DEFINITIONS ::=BEGIN
+
+IMPORTS
+    MODULE-IDENTITY, OBJECT-TYPE, Counter32, Gauge32, Counter64,
+    Integer32, TimeTicks, mib-2,enterprises
+    NOTIFICATION-TYPE                        FROM SNMPv2-SMI
+    TEXTUAL-CONVENTION, DisplayString,
+    PhysAddress, TruthValue, RowStatus,
+    TimeStamp, AutonomousType, TestAndIncr   FROM SNMPv2-TC
+    MODULE-COMPLIANCE, OBJECT-GROUP,
+    NOTIFICATION-GROUP                       FROM SNMPv2-CONF
+    snmpTraps				     FROM SNMPv2-MIB; 
+
+ling OBJECT IDENTIFIER ::={ enterprises 33332 }
+
+sysInfo OBJECT IDENTIFIER ::= { ling 1 }
+
+cpuUsage OBJECT-TYPE
+		SYNTAX DisplayString 
+		ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"CPU Usage"
+		::= {sysInfo 1}
+
+memUsage OBJECT-TYPE
+		SYNTAX INTEGER
+		ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"Memory Usage"
+		::= {sysInfo 2}
+
+DiskUsage OBJECT-TYPE
+		SYNTAX DisplayString
+		ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"Disk Usage"
+		::= {sysInfo 3}
+
+NetUsage OBJECT-TYPE
+		SYNTAX DisplayString
+		ACCESS read-only
+		STATUS current
+		DESCRIPTION
+			"Net Usage"
+		::= {sysInfo 4}
+
+
+END
